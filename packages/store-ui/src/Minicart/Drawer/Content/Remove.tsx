@@ -28,7 +28,7 @@ const MinicartDrawerRemoveItem = <T extends Item>({
   }, [item, removeItem])
 
   return (
-    <Button variant={`${variant}.delete`} onClick={onClick}>
+    <Button data-testid="minicartDelete" variant={`${variant}.delete`} onClick={onClick}>
       {isLoading ? (
         <Spinner width={24} height={24} />
       ) : (
