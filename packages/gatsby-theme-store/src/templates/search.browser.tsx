@@ -1,6 +1,5 @@
 import { gql } from '@vtex/gatsby-plugin-graphql'
-import { SuspenseSSR } from '@vtex/store-ui'
-import React from 'react'
+import React, { Suspense } from 'react'
 import type { FC } from 'react'
 import type { PageProps as GatsbyPageProps } from 'gatsby'
 
@@ -16,6 +15,7 @@ import type {
   BrowserSearchPageQueryQuery,
   BrowserSearchPageQueryQueryVariables,
 } from './__generated__/BrowserSearchPageQuery.graphql'
+import { isServer } from '../utils/env'
 
 type Props = PageProps
 
@@ -69,9 +69,13 @@ type PageProps = GatsbyPageProps<
 
 const Page: FC<PageProps> = (props) => (
   <Layout>
-    <SuspenseSSR fallback={<AboveTheFoldPreview />}>
-      <SearchPage {...props} />
-    </SuspenseSSR>
+    {isServer ? (
+      <AboveTheFoldPreview />
+    ) : (
+      <Suspense fallback={<AboveTheFoldPreview />}>
+        <SearchPage {...props} />
+      </Suspense>
+    )}
   </Layout>
 )
 
