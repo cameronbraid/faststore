@@ -2,21 +2,21 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import 'requestidlecallback-polyfill'
 
+import { UIProvider } from '@vtex/store-sdk'
 import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
 import type { WrapRootElementBrowserArgs } from 'gatsby'
 import type { ElementType } from 'react'
-import { UIProvider } from '@vtex/store-sdk'
 
+import ErrorBoundary from './components/Error/ErrorBoundary'
 import { Provider as OrderFormProvider } from './sdk/orderForm/LazyProvider'
+import { Provider as VTEXRCProvider } from './sdk/pixel/vtexrc/Provider'
+import {
+  onRouteUpdate as progressOnRouteUpdate,
+  Progress,
+} from './sdk/progress'
 import { Provider as RegionProvider } from './sdk/region/Provider'
 import { Provider as ToastProvider } from './sdk/toast/Provider'
-import { Provider as VTEXRCProvider } from './sdk/pixel/vtexrc/Provider'
-import ErrorBoundary from './components/Error/ErrorBoundary'
-import {
-  Progress,
-  onRouteUpdate as progressOnRouteUpdate,
-} from './sdk/progress'
 
 export const replaceHydrateFunction = () => async (
   element: ElementType,
