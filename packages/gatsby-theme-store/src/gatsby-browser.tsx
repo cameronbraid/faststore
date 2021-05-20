@@ -64,6 +64,10 @@ export const wrapRootElement = ({ element }: WrapRootElementBrowserArgs) => {
   return root
 }
 
+export const onInitialClientRender = () => {
+  globalThis.__REACT_HYDRATED__ = true
+}
+
 export const wrapPageElement = ({
   element,
   props: { location },

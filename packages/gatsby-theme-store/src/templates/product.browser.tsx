@@ -13,6 +13,7 @@ import type {
   BrowserProductPageQueryQueryVariables,
 } from './__generated__/BrowserProductPageQuery.graphql'
 import { isServer } from '../utils/env'
+import HybridWrapper from '../components/HybridWrapper'
 
 export type BrowserProductPageProps = PageProps
 
@@ -35,13 +36,9 @@ const ProductPage: FC<BrowserProductPageProps> = (props) => {
 
 const Page: FC<BrowserProductPageProps> = (props) => (
   <Layout>
-    {isServer ? (
-      <AboveTheFoldPreview />
-    ) : (
-      <Suspense fallback={<AboveTheFoldPreview />}>
-        <ProductPage {...props} />
-      </Suspense>
-    )}
+    <HybridWrapper fallback={<AboveTheFoldPreview />}>
+      <ProductPage {...props} />
+    </HybridWrapper>
   </Layout>
 )
 

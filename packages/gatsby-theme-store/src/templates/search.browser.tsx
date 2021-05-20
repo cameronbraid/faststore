@@ -1,21 +1,21 @@
 import { gql } from '@vtex/gatsby-plugin-graphql'
-import React, { Suspense } from 'react'
+import React from 'react'
 import type { FC } from 'react'
 import type { PageProps as GatsbyPageProps } from 'gatsby'
 
+import HybridWrapper from '../components/HybridWrapper'
 import Layout from '../components/Layout'
 import SearchView from '../components/SearchPage'
 import AboveTheFoldPreview from '../components/SearchPage/AboveTheFoldPreview'
 import { useQuery } from '../sdk/graphql/useQuery'
-import { useSearchParamsFromUrl } from '../sdk/search/converter/useSearchParamsFromURL'
 import { useQueryVariablesFromSearchParams } from '../sdk/search/converter/useQueryVariablesFromSearchParams'
+import { useSearchParamsFromUrl } from '../sdk/search/converter/useSearchParamsFromURL'
 import { usePersonalizedSearchRedirect } from '../sdk/search/usePersonalizedSearchRedirect'
 import { BrowserSearchPageQuery } from './__generated__/BrowserSearchPageQuery.graphql'
 import type {
   BrowserSearchPageQueryQuery,
   BrowserSearchPageQueryQueryVariables,
 } from './__generated__/BrowserSearchPageQuery.graphql'
-import { isServer } from '../utils/env'
 
 type Props = PageProps
 
@@ -69,13 +69,9 @@ type PageProps = GatsbyPageProps<
 
 const Page: FC<PageProps> = (props) => (
   <Layout>
-    {isServer ? (
-      <AboveTheFoldPreview />
-    ) : (
-      <Suspense fallback={<AboveTheFoldPreview />}>
-        <SearchPage {...props} />
-      </Suspense>
-    )}
+    <HybridWrapper fallback={<AboveTheFoldPreview />}>
+      <SearchPage {...props} />
+    </HybridWrapper>
   </Layout>
 )
 
