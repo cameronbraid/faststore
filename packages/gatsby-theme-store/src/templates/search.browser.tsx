@@ -136,28 +136,6 @@ export const query = gql`
               from
               to
             }
-            values: children {
-              key
-              name
-              value
-              selected
-              quantity
-              range {
-                from
-                to
-              }
-              values: children {
-                key
-                name
-                value
-                selected
-                quantity
-                range {
-                  from
-                  to
-                }
-              }
-            }
           }
         }
       }

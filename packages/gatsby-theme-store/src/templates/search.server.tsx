@@ -108,28 +108,6 @@ export const query = graphql`
               from
               to
             }
-            values: children {
-              key
-              name
-              value
-              selected
-              quantity
-              range {
-                from
-                to
-              }
-              values: children {
-                key
-                name
-                value
-                selected
-                quantity
-                range {
-                  from
-                  to
-                }
-              }
-            }
           }
         }
       }
