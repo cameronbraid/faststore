@@ -30,7 +30,6 @@ export const useSearchInfinite = <Query extends BaseQueryShape | undefined>({
   const variables = useQueryVariablesFromSearchParams(searchParams)
 
   const initialData = firstPageData && [firstPageData]
-  // TODO: Fix this any type before shipping
   const { data, error, size, setSize } = useQueryInfinite<Query>(
     query,
     (page, previousPageData) => {

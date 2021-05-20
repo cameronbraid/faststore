@@ -226,9 +226,6 @@ export const onCreateWebpackConfig = (
             ? '../../src/index'
             : ''
         ),
-        'react-intl$': require.resolve('react-intl', {
-          paths: [process.cwd()],
-        }), // TODO: remove this before shipping
         '@vtex/store-ui$': resolve(
           require.resolve('@vtex/store-ui', { paths: [process.cwd()] }),
           stage === 'build-javascript' || stage === 'develop'

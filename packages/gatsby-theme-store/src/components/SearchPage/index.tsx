@@ -49,8 +49,6 @@ const SearchView: FC<SearchViewProps> = (props) => {
           pageUrl: window.location.href,
           pageTitle: document.title,
           referrer: document.referrer,
-          // TODO: see if including query here is necessary
-          // term: filters.fullText ?? filters.query ?? '',
           term: term ?? '',
           results: data.vtex.productSearch?.recordsFiltered ?? 0,
           pageType,
