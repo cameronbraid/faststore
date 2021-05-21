@@ -19,6 +19,11 @@ export const onCreateWebpackConfig = ({ actions }: CreateWebpackConfigArgs) => {
     resolve: {
       alias: {
         'intl-messageformat-parser': 'intl-messageformat-parser/lib/no-parser',
+        '@formatjs/icu-messageformat-parser':
+          '@formatjs/icu-messageformat-parser/no-parser',
+        'react-intl$': require.resolve('react-intl', {
+          paths: [process.cwd()],
+        }),
       },
     },
   })
