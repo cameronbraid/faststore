@@ -17,7 +17,6 @@ type SearchQuery = ServerSearchPageQueryQuery | BrowserSearchPageQueryQuery
 export interface SearchContext {
   data: SearchQuery
   searchParams: SearchParamsState
-
   setFacet: (item: Facet) => void
   toggleFacet: (item: Facet) => void
   toggleFacets: (item: Facet[]) => void

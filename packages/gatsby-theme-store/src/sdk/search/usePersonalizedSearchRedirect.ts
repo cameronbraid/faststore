@@ -12,7 +12,7 @@ type Options = SearchParamsState
  * rendered page. We do this by adding a new param to the path
  *
  * TODO: find a solution for not having to do these navigations on the client-side
- * */
+ */
 export const usePersonalizedSearchRedirect = (searchParams: Options) => {
   const { regionId } = useRegion()
 

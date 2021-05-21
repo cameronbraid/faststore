@@ -7,11 +7,11 @@ import { Provider as RegionProvider } from './sdk/region/Provider'
 import { Provider as ToastProvider } from './sdk/toast/Provider'
 
 export const wrapRootElement = ({ element }: WrapRootElementNodeArgs) => (
-  <ToastProvider>
+  <UIProvider>
     <RegionProvider>
-      <UIProvider>{element}</UIProvider>
+      <ToastProvider>{element}</ToastProvider>
     </RegionProvider>
-  </ToastProvider>
+  </UIProvider>
 )
 
 export const onRenderBody = ({
