@@ -3,6 +3,7 @@ import { SuspenseSSR } from '@vtex/store-ui'
 import React from 'react'
 import type { PageProps } from 'gatsby'
 import type { FC } from 'react'
+import { useMatch } from '@reach/router'
 
 import Layout from '../components/Layout'
 import { useQuery } from '../sdk/graphql/useQuery'
@@ -17,9 +18,7 @@ import type {
 export type BrowserProductPageProps = PageProps
 
 const ProductPage: FC<BrowserProductPageProps> = (props) => {
-  const {
-    params: { slug },
-  } = props
+  const { slug } = useMatch('/:slug/p')!
 
   const { data } = useQuery<
     BrowserProductPageQueryQuery,
